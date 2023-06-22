@@ -8,5 +8,7 @@ df = spark.read.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.
     .option("driver", "org.postgresql.Driver").option("dbtable", "emp_info") \
     .option("user", "consultants").option("password", "WelcomeItc@2022").load()
 df.printSchema()
-df.show(10)
+df1 = df.collect(10)
+df1.write.mode('overwrite').saveAsTable("product.dummy")
+
 
