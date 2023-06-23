@@ -1,7 +1,7 @@
 from pyspark.sql import *
 from pyspark.sql.functions import *
 
-spark = SparkSession.builder.config().master("local").appName("MiniProj").enableHiveSupport().getOrCreate()
+spark = SparkSession.builder.master("local").appName("MiniProj").enableHiveSupport().getOrCreate()
 
 df = spark.read.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432"
                                              "/testdb") \
@@ -12,7 +12,6 @@ df.printSchema()
 # Define the calculation of age
 df_age = df.withColumn("DOB", to_date(col("DOB"), "M/d/yyyy")) \
     .withColumn("age", floor(datediff(current_date(), col("DOB")) / 365))
-
 
 # Define the increments based on departments and gender
 department_increment_expr = when(col("dept") == "IT", 0.1) \
