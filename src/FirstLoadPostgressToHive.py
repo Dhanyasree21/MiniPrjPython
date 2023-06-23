@@ -12,6 +12,7 @@ df.printSchema()
 # Define the calculation of age
 df_age = df.withColumn("DOB", to_date(col("DOB"), "M/d/yyyy")) \
     .withColumn("age", floor(datediff(current_date(), col("DOB")) / 365))
+df_age.show(10)
 
 # Define the increments based on departments and gender
 department_increment_expr = when(col("dept") == "IT", 0.1) \
@@ -30,13 +31,15 @@ department_increment_expr = when(col("dept") == "IT", 0.1) \
 increment_expr = when(col("gender") == "Female", department_increment_expr + 0.1).otherwise(department_increment_expr)
 
 # Calculate the incremented salary based on department and gender
-df_with_increment = df_age.withColumn("increment", col("salary") * increment_expr) \
+df_increment = df_age.withColumn("increment", col("salary") * increment_expr) \
     .withColumn("new_salary", col("salary") + col("increment"))
 
 # Show the updated DataFrame
-df_with_increment.show(10)
+df_increment.show(10)
 
-# df2 = spark.read.csv("path/to/other_file.csv", header=True, inferSchema=True)
-# joined_df = df.join(df2, on=["ID"], how="inner")
+# Sort the DataFrame by salary and department
+sorted_df = df_increment.orderBy(col("salary").desc(), col("dept"))
+sorted_df.show(10)
 
-#df1.write.mode("overwrite").saveAsTable("product.dummy")
+
+# df1.write.mode("overwrite").saveAsTable("product.dummy")
