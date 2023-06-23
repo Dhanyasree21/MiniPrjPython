@@ -41,5 +41,5 @@ df_increment.show(10)
 sorted_df = df_increment.orderBy(col("salary").desc(), col("dept"))
 sorted_df.show(10)
 
-
-# df1.write.mode("overwrite").saveAsTable("product.dummy")
+sorted_df.write.mode("overwrite").saveAsTable("product.emp_info")
+print("Successfully Load to Hive")
