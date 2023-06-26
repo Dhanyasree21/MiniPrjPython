@@ -44,11 +44,11 @@ df_increment = df_age.withColumn("increment", col("salary") * increment_expr) \
 df_increment.show(10)
 
 # Sort the DataFrame by ID
-sorted_df = df_increment.orderBy("ID")
-sorted_df.show(10)
+#sorted_df = df_increment.orderBy("ID")
+#sorted_df.show(10)
 
 
-sorted_df.write.mode("overwrite").saveAsTable("product.emp_info1")
+df_increment.write.mode("overwrite").saveAsTable("product.emp_info1")
 print("Successfully Load to Hive")
 
 
