@@ -1,9 +1,8 @@
 import pandas as pd
 from sqlalchemy import create_engine
 from urllib.parse import quote
-import psycopg2
 
-csv_file_path = r'C:\Users\kajal\IdeaProjects\MiniPrjPython\Data\emp_info.csv'
+csv_file_path = r'C:\Users\kajal\IdeaProjects\HelloWorld\src\Data\emp_info.csv'
 df = pd.read_csv(csv_file_path)
 print(df)
 
