@@ -6,7 +6,7 @@ max_id = spark.sql("SELECT max(id) FROM product.emp_info")
 m_id = max_id.collect()[0][0]
 str(m_id)
 
-query = 'SELECT * FROM emp_info WHERE "ID" < ' + str(m_id)
+query = 'SELECT * FROM emp_info WHERE "ID" > ' + str(m_id)
 
 more_data = spark.read.format("jdbc") \
     .option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb") \
@@ -44,8 +44,8 @@ df_increment = df_age.withColumn("increment", col("salary") * increment_expr) \
 df_increment.show(10)
 
 # Sort the DataFrame by ID
-#sorted_df = df_increment.orderBy("ID")
-#sorted_df.show(10)
+sorted_df = df_increment.orderBy("ID")
+sorted_df.show(10)
 
 
 df_increment.write.mode("overwrite").saveAsTable("product.emp_info1")
