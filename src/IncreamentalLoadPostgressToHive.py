@@ -47,7 +47,6 @@ df_increment.show(10)
 sorted_df = df_increment.orderBy("ID")
 sorted_df.show(10)
 
-
 df_increment.write.mode("append").saveAsTable("product.emp_info")
 print("Successfully Load to Hive")
 
@@ -56,6 +55,6 @@ print("Successfully Load to Hive")
 # df2 = spark.read.csv("path/to/other_file.csv", header=True, inferSchema=True)
 # joined_df = df.join(df2, on=["ID"], how="inner")
 
-#df1.write.mode("overwrite").saveAsTable("product.dummy")
-#hadoop fs -chmod -R 775 /warehouse/tablespace/external/hive/product.db/emp_info
-#sudo -u hdfs hdfs dfs -chmod -R 777 /warehouse/tablespace/external/hive/product.db
+# df1.write.mode("overwrite").saveAsTable("product.dummy")
+# hadoop fs -chmod -R 775 /warehouse/tablespace/external/hive/product.db/emp_info
+# sudo -u hdfs hdfs dfs -chmod -R 777 /warehouse/tablespace/external/hive/product.db

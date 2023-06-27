@@ -41,7 +41,6 @@ df_increment.show(10)
 sorted_df = df_increment.orderBy("ID")
 sorted_df.show(10)
 
-
 sorted_df.write.mode("overwrite").saveAsTable("product.emp_info")
 print("Successfully Load to Hive")
 
