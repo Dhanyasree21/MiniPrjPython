@@ -44,3 +44,5 @@ sorted_df.show(10)
 
 sorted_df.write.mode("overwrite").saveAsTable("product.emp_info")
 print("Successfully Load to Hive")
+
+# spark-submit --master local[*] --jars /var/lib/jenkins/workspace/nagaranipysparkdryrun/lib/postgresql-42.5.3.jar src/FirstLoadPostgressToHive.py

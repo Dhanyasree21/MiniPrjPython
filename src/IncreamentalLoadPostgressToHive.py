@@ -51,6 +51,7 @@ sorted_df.show(10)
 df_increment.write.mode("append").saveAsTable("product.emp_info")
 print("Successfully Load to Hive")
 
+# spark-submit --master local[*] --jars /var/lib/jenkins/workspace/nagaranipysparkdryrun/lib/postgresql-42.5.3.jar src/IncreamentalLoadPostgressToHive.py
 
 # df2 = spark.read.csv("path/to/other_file.csv", header=True, inferSchema=True)
 # joined_df = df.join(df2, on=["ID"], how="inner")
