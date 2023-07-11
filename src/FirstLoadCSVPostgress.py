@@ -9,6 +9,6 @@ print(df)
 password = quote('WelcomeItc@2022')
 engine = create_engine('postgresql://consultants:' + password + '@ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb')
 print('connected')
-df.to_sql('emp_info', engine, index=False)
+df.to_sql('emp_info1', engine, index=False)
 print('loaded')
 
